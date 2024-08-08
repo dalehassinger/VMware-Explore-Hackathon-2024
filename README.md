@@ -4,7 +4,7 @@ Team Name: "RVTools + Ollama"
 
 Team Description: "Use ollama to gather information from RVTools data files."
 
-Team Members:
+**Team Members:**  
 Dale Hassinger | dale.hassinger@broadcom.com  
 Adrian Ayran   | adrianayran@gmail.com  
 Brian Haskell  | bth@ams.org  
