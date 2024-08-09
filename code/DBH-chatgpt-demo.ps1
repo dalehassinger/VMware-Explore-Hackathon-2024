@@ -67,6 +67,7 @@ $requestBody = @{
         @{ role = "user"; content = $question }
     )
 } | ConvertTo-Json
+$requestBody
 
 # Make the API request
 $response = Invoke-RestMethod -Uri $apiUrl -Method Post -Headers @{ "Authorization" = "Bearer $apiKey" } -Body $requestBody -ContentType "application/json"
