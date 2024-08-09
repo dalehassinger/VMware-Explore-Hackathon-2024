@@ -15,18 +15,19 @@ Team-Idea.md has information on what Team wants to "Hack".
 
 conversation.md has "Hacked" conversation examples.
 
-Link to Presentation PPT File
+Blog Post I created to discuss how I use ollama:  
+https://www.vcrocs.info/ollama/  
 
-Please add any ideas to this file.
+Please add any ideas to this file.  
 
-I turned on Discussions for us to use as a option.
+I turned on Discussions for us to use as a option.  
 
-Blog about teams journey
+Blog about teams journey  
 
-Presentation?
-Who, What, How.
+Presentation?  
+Who, What, How.  
 
-Prompt Engineering
+Prompt Engineering  
 
 ---
 
