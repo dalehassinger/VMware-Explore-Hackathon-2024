@@ -7,5 +7,5 @@ ollama Links:
 https://www.ollama.com/  
 
 
-ollama API Documentation
+ollama API Documentation  
 https://github.com/ollama/ollama/blob/main/docs/api.md  
