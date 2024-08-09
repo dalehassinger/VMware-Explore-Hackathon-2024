@@ -19,6 +19,8 @@ Link to Presentation PPT File
 
 Please add any ideas to this file.
 
+I turned on Discussions for us to use as a option.
+
 Blog about teams journey
 
 Presentation?
