@@ -1,4 +1,6 @@
-## VMware Explore Hackathon 2024
+### VMware Explore Hackathon 2024
+
+---
 
 **Team Name: "RVTools + Ollama"**
 
