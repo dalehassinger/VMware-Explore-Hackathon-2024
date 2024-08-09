@@ -16,8 +16,14 @@ Amos Clerizier | amos.clerizier@moffitt.org
 
 ---
 
-Blog Post I created to discuss how I use ollama:  
+**Blog Post I created to discuss how I use ollama:**  
 https://www.vcrocs.info/ollama/  
+
+---
+
+**This has been my goto but always looking at options:**  
+
+* vscode + continue extension + ollama + llama3  
 
 ---
 
@@ -31,9 +37,9 @@ https://www.vcrocs.info/ollama/
 **Our Team:**
 * Team-Idea.md has information on what Team wants to "Hack".  
 * conversation.md has "Hacked" conversation examples.  
-* Please add any ideas to this file.  
+  * Please add any ideas to this file.  
 * I turned on Discussions for us to use as a option.  
-* Blog about teams journey  
+* Create a Blog about teams journey  
 * Presentation?  
   * Who, What, How.  
 * Prompt Engineering  
