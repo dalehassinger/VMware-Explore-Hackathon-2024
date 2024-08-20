@@ -33,9 +33,9 @@ function New-RVTools-Report {
 
     $data = (Import-Csv $CsvFile) | ConvertTo-Json #Import-Csv -Path $CsvFile | ConvertTo-Json
 
-    $results = Invoke-AIPrompt -Prompt $Prompt -Data $data -Model 'gpt-4o'
+    $reportResults = Invoke-AIPrompt -Prompt $Prompt -Data $Global:results -Model 'gpt-4o'
 
-    Set-Content -Path $htmlFile -Value $results
+    Set-Content -Path $htmlFile -Value $reportResults
 
 } # End Function
 
@@ -74,3 +74,4 @@ New-RVTools-Report -Prompt $prompt -htmlFile $htmlFile
 
 # Open Report in Default Browser
 Invoke-Item $htmlFile
+
