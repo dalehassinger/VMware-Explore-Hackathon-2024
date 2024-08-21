@@ -40,7 +40,7 @@ function New-RVTools-Report {
 } # End Function
 
 
-
+# ----- [ Start a New Prompt ] -----
 
 # ----- [ Cluster Prompt ] -----
 $prompt = @"
@@ -63,6 +63,7 @@ $prompt = @"
 Use json data. Create a html report
 - make all the text 12px
 - header to be 'Cluster Host Info' and 14px
+- header color to be grey
 - make the columns sortable
 - if the table column Consistent equal 'true' make the text green and all other vales red
 - No explanation
@@ -75,3 +76,39 @@ New-RVTools-Report -Prompt $prompt -htmlFile $htmlFile
 # Open Report in Default Browser
 Invoke-Item $htmlFile
 
+
+
+# ----- [ Start a New Prompt ] -----
+
+# ----- [ VM High CPU ] -----
+$prompt = @"
+Show VM Name, CPU and Memory
+- CPUs Value must be greater than 4
+- return data as json
+- No explanation
+- No Fence Blocks
+"@
+
+$global:results = ""
+$CsvFile = "/Users/hdale/RVTools/RVTools_tabvInfo.csv"
+New-RVTools-Prompt -Prompt $prompt -CsvFile $CsvFile
+
+$global:results
+
+# --- Cluster Report ---
+$prompt = @"
+Use json data. Create a html report
+- make all the text 12px
+- header to be 'VMs with CPU Count Greater than 4' and 14px
+- header color to be grey
+- make the columns sortable
+- if the column CPUs equal '12' make the text red, '8' make the text orange
+- No explanation
+- No Fence Blocks
+"@
+
+$htmlFile = "/Users/hdale/github/PS-TAM-Lab/Hackathon-Report-CPU4.html"
+New-RVTools-Report -Prompt $prompt -htmlFile $htmlFile
+
+# Open Report in Default Browser
+Invoke-Item $htmlFile
