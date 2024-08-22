@@ -1,13 +1,20 @@
 
 #$env:OpenAIKey = 'sk-HackMe'
 
-function New-RVTools-Prompt {
+function New-RVTools-Report {
     param (
         [Parameter(Mandatory=$true)]
-        [string]$Prompt,
+        [string]$PromptData,
 
         [Parameter(Mandatory=$true)]
-        [string]$CsvFile
+        [string]$CsvFile,
+
+        [Parameter(Mandatory=$true)]
+        [string]$PromptReport,
+
+        [Parameter(Mandatory=$true)]
+        [string]$htmlFile
+
     ) # End Parameter
 
     # Convert csv to json
@@ -16,23 +23,7 @@ function New-RVTools-Prompt {
     # Send Prompt to ChatGPT and save results to global variable
     $global:results = Invoke-AIPrompt -Prompt $Prompt -Data $data -Model 'gpt-4o'
 
-} # End Function
-
-
-
-
-
-function New-RVTools-Report {
-    param (
-        [Parameter(Mandatory=$true)]
-        [string]$Prompt,
-
-        [Parameter(Mandatory=$true)]
-        [string]$htmlFile
-    ) # End Parameter
-
-    #$data = (Import-Csv $CsvFile) | ConvertTo-Json #Import-Csv -Path $CsvFile | ConvertTo-Json
-
+    # Send Prompt to ChatGPT to create html Report
     $reportResults = Invoke-AIPrompt -Prompt $Prompt -Data $Global:results -Model 'gpt-4o'
 
     Set-Content -Path $htmlFile -Value $reportResults
@@ -40,10 +31,11 @@ function New-RVTools-Report {
 } # End Function
 
 
+
 # ----- [ Start a New Prompt ] -----
 
 # ----- [ Cluster Prompt ] -----
-$prompt = @"
+$promptData = @"
 Act as a RVTools SME
 - Group Host together by Cluster Name
 - Within each cluster, is the host CPU and Memory the same?
@@ -53,14 +45,9 @@ Act as a RVTools SME
 - No Fence Blocks
 "@
 
-$global:results = ""
-$CsvFile = "/Users/hdale/RVTools/RVTools_tabvHost.csv"
-New-RVTools-Prompt -Prompt $prompt -CsvFile $CsvFile
-
-#$global:results
 
 # --- Cluster Report ---
-$prompt = @"
+$promptReport = @"
 Act as a html SME
 - Use json data to create a html report
 - make all the text 12px
@@ -72,11 +59,23 @@ Act as a html SME
 - No Fence Blocks
 "@
 
+# Define the files to use and create
+$CsvFile = "/Users/hdale/RVTools/RVTools_tabvHost.csv"
 $htmlFile = "/Users/hdale/github/PS-TAM-Lab/Hackathon-Report-ClusterCPUMEM.html"
-New-RVTools-Report -Prompt $prompt -htmlFile $htmlFile
+
+# Run Function
+New-RVTools-Report -PromptData $promptData -CsvFile $CsvFile -PromptReport $promptReport -htmlFile $htmlFile
 
 # Open Report in Default Browser
 Invoke-Item $htmlFile
+
+
+
+
+
+
+
+
 
 
 
