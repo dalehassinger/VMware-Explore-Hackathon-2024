@@ -10,12 +10,14 @@
 
 **Team Members:**  
 
-Dale Hassinger | dale.hassinger@broadcom.com  
-Adrian Ayran   | adrianayran@gmail.com  
-Brian Haskell  | bth@ams.org  
-Don Horrox     | donald.horrox@moffitt.org  
-Amos Clerizier | amos.clerizier@moffitt.org  
-
+| Name            | Email                        | Company               |
+|-----------------|------------------------------|-----------------------|
+| Dale Hassinger  | dale.hassinger@broadcom.com  | Broadcom, Captain     |
+| Don Horrox      | donald.horrox@moffitt.org    | Moffitt Cancer Center |
+| Amos Clerizier  | amos.clerizier@moffitt.org   | Moffitt Cancer Center | 
+| Brian Haskell   | bth@ams.org                  | AMS                   |
+| Adrian Ayran    | adrianayran@gmail.com        | Virtua Health         |
+  
 ---
 
 **Blog Post I created to discuss how I use ollama:**  
@@ -45,13 +47,5 @@ https://www.vcrocs.info/ollama/
 * Presentation?  
   * Who, What, How.  
 * Prompt Engineering  
-
----
-
-Dale Hassinger | Broadcom, Captain  
-Adrian Ayran | Virtua Health  
-Brian Haskell | AMS  
-Don Horrox | Moffitt Cancer Center  
-Amos Clerizier | Moffitt Cancer Center  
 
 ---
