@@ -1,17 +1,8 @@
 $env:OpenAIKey = 'sk-HackMe'
 
-# Command to see where PS Modules are install on a MAC
-#$env:PSModulePath -split ":"
-
-#Import-Module PSAIAgent
-#ipmo psai -force
-
-Clear-Host
-
 # ----- [ Use PSAIAgent PS Module ] -----
 
 # ----- [ Functions to Get RVTools data ] -----
-
 # Function to get RVTools Hosts Info
 function Get-RVToolsData-Hosts {
 
@@ -34,12 +25,39 @@ function Get-RVToolsData-Health {
 } # End Function
 
 
+# Function to prompt against RVTools Data and Generate Report
+function Get-RVTools-Report {
+
+    param(
+        [parameter(mandatory = $true)]
+        [string]$importCSV,
+        [parameter(mandatory = $true)]
+        [string]$ReportPath,
+        [parameter(mandatory = $true)]
+        [string]$prompt
+
+    ) # End param
+
+    # --- Create the Hosts Agent
+    $RVToolsData = $importCSV
+    $tools = Register-Tool $RVToolsData
+    $agent = New-Agent -Tools $tools -ShowToolCalls
+
+    $htmlReport = $agent | Get-AgentResponse $prompt
+    #$htmlReport
+    
+    # Define the path to the Report HTML file
+    Set-Content -Path $ReportPath -Value $htmlReport
+    
+    Invoke-Item $ReportPath
+
+} # End Function
+
+
 
 Clear-Host
 
-# --- Create the Hosts Agent
-$tools = Register-Tool Get-RVToolsData-Hosts
-$agent = New-Agent -Tools $tools -ShowToolCalls
+# ----- [ New Prompt | Hosts | Cluster ] -----
 
 $prompt = @"
 Group hosts by cluster
@@ -53,17 +71,18 @@ Group hosts by cluster
 - No code fence
 "@
 
-$htmlReport = $agent | get-agentResponse $prompt
-#$htmlReport
-
-# Define the path to the Report HTML file
+# Define Function Parameters
+$importCSV  = "Get-RVToolsData-Hosts"
 $ReportPath = "/Users/hdale/github/PS-TAM-Lab/Hackathon-Agent-rpt-Cluster-CPU-MEM.html"
-Set-Content -Path $ReportPath -Value $htmlReport
 
-Invoke-Item $ReportPath
+# Run the Function | Generate the Report
+Get-RVTools-Report -importCSV $importCSV -ReportPath $ReportPath -prompt $prompt
 
 
-# ----- New Prompt with same Agent
+
+Clear-Host
+
+# ----- [ New Prompt | Hosts | Core Count ] -----
 
 $prompt = @"
 Show me the core count for every host.
@@ -77,15 +96,18 @@ Show me the core count for every host.
 - No code fence
 "@
 
-$htmlReport = $agent | get-agentResponse $prompt
-#$htmlReport
-
-# Define the path to the Report HTML file
+# Define Function Parameters
+$importCSV  = "Get-RVToolsData-Hosts"
 $ReportPath = "/Users/hdale/github/PS-TAM-Lab/Hackathon-Agent-rpt-Core-Count.html"
-Set-Content -Path $ReportPath -Value $htmlReport
 
-Invoke-Item $ReportPath
+# Run the Function | Generate the Report
+Get-RVTools-Report -importCSV $importCSV -ReportPath $ReportPath -prompt $prompt
 
+
+
+Clear-Host
+
+# ----- [ New Prompt | Health | CDROM ] -----
 
 # --- Create the Health Agent ---
 $tools = Register-Tool Get-RVToolsData-Health
@@ -104,18 +126,18 @@ Show me the VM Names where message shows CDROM connected.
 - No code fence
 "@
 
-$htmlReport = $agent | get-agentResponse $prompt
-#$htmlReport
-
-
-# Define the path to the Report HTML file
+# Define Function Parameters
+$importCSV  = "Get-RVToolsData-Health"
 $ReportPath = "/Users/hdale/github/PS-TAM-Lab/Hackathon-Agent-rpt-CDRom.html"
-Set-Content -Path $ReportPath -Value $htmlReport
 
-Invoke-Item $ReportPath
+# Run the Function | Generate the Report
+Get-RVTools-Report -importCSV $importCSV -ReportPath $ReportPath -prompt $prompt
 
 
-# --- New prompt
+
+Clear-Host
+
+# ----- [ New Prompt | Health | Zombie ] -----
 
 $prompt = @"
 Show me the Names where message shows Zombie vmdk file.
@@ -130,11 +152,10 @@ Show me the Names where message shows Zombie vmdk file.
 - No code fence
 "@
 
-$htmlReport = $agent | get-agentResponse $prompt
-#$htmlReport
 
-# Define the path to the Report HTML file
+# Define Function Parameters
+$importCSV  = "Get-RVToolsData-Health"
 $ReportPath = "/Users/hdale/github/PS-TAM-Lab/Hackathon-Agent-rpt-Zombie-files.html"
-Set-Content -Path $ReportPath -Value $htmlReport
 
-Invoke-Item $ReportPath
+# Run the Function | Generate the Report
+Get-RVTools-Report -importCSV $importCSV -ReportPath $ReportPath -prompt $prompt
