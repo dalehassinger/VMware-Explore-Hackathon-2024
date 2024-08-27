@@ -64,7 +64,7 @@ Group hosts by cluster
 - Do all hosts within the cluster have the same cpu and memory?
 - make table header a light grey background with bold text
 - Name the report "vCenter Cluster | Host CPU/Memory"
-- make every other row in the table a very light green
+- make every other row in the table color #90EE90 
 - Use Tahoma font for all html text
 - Return results as a html file
 - No expanation
@@ -89,7 +89,7 @@ Show me the core count for every host.
 - Show a Total core count at bottom line of table
 - make table header a light grey background with bold text
 - Name the report "VCF Total Host Core Counts"
-- make every other row in the table a very light green
+- make every other row in the table color #90EE90
 - Use Tahoma font for all html text
 - Return results as a html file
 - No expanation
@@ -118,7 +118,7 @@ Show me the VM Names where message shows CDROM connected.
 - Include the Name and Message in the Table
 - make table header a light grey background with Bold text, 12px
 - Report Header "VMs with CDROM Connected"
-- make every other row in the table a very light green
+- make every other row in the table color #90EE90
 - Use Tahoma font for all html text and size 10px
 - make the columns sortable
 - Return results as a html file
@@ -144,7 +144,7 @@ Show me the Names where message shows Zombie vmdk file.
 - Include the Name and Message in the Table
 - make table header a light grey background with Bold text, 12px
 - Report Header "Zombie Files"
-- make every other row in the table a very light green
+- make every other row in the table color #90EE90
 - Use Tahoma font for all html text and size 10px
 - make the columns sortable
 - Return results as a html file
