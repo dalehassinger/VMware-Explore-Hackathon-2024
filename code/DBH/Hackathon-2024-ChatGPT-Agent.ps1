@@ -1,4 +1,4 @@
-$env:OpenAIKey = 'sk-HackMe'
+$env:OpenAIKey = 'sk-TA2H'
 
 # ----- [ Use PSAIAgent PS Module ] -----
 

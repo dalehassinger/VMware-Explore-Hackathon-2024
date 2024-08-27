@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vCenter Cluster | Host CPU/Memory</title>
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th {
+            background-color: lightgrey;
+            font-weight: bold;
+        }
+        tr:nth-child(odd) {
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+<body>
+    <h1>vCenter Cluster | Host CPU/Memory</h1>
+    <table border="1">
+        <tr>
+            <th>Cluster</th>
+            <th>Host</th>
+            <th>CPU Model</th>
+            <th># CPU</th>
+            <th># Cores</th>
+            <th>Memory (MB)</th>
+            <th>CPU Usage (%)</th>
+            <th>Memory Usage (%)</th>
+            <th>Are all hosts identical?</th>
+        </tr>
+        <tr>
+            <td>Cluster-MGMT-01</td>
+            <td>esxi8-01.corp.local</td>
+            <td>Intel(R) Xeon(R) Gold 6330 CPU @ 2.00GHz</td>
+            <td>8</td>
+            <td>16</td>
+            <td>96303</td>
+            <td>12</td>
+            <td>37</td>
+            <td rowspan="3">Yes</td>
+        </tr>
+        <tr>
+            <td>Cluster-MGMT-01</td>
+            <td>esxi8-02.corp.local</td>
+            <td>Intel(R) Xeon(R) Gold 6330 CPU @ 2.00GHz</td>
+            <td>8</td>
+            <td>16</td>
+            <td>96303</td>
+            <td>31</td>
+            <td>70</td>
+        </tr>
+        <tr>
+            <td>Cluster-MGMT-01</td>
+            <td>esxi8-03.corp.local</td>
+            <td>Intel(R) Xeon(R) Gold 6330 CPU @ 2.00GHz</td>
+            <td>8</td>
+            <td>16</td>
+            <td>96303</td>
+            <td>11</td>
+            <td>45</td>
+        </tr>
+        <tr>
+            <td>Cluster-Compute-01</td>
+            <td>esxi8-04.corp.local</td>
+            <td>Intel(R) Xeon(R) Gold 6330 CPU @ 2.00GHz</td>
+            <td>4</td>
+            <td>8</td>
+            <td>65535</td>
+            <td>7</td>
+            <td>47</td>
+            <td rowspan="2">Yes</td>
+        </tr>
+        <tr>
+            <td>Cluster-Compute-01</td>
+            <td>esxi8-05.corp.local</td>
+            <td>Intel(R) Xeon(R) Gold 6330 CPU @ 2.00GHz</td>
+            <td>4</td>
+            <td>8</td>
+            <td>65535</td>
+            <td>8</td>
+            <td>50</td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<html>
+<head>
+    <title>VMs with CDROM Connected</title>
+    <style>
+        body { font-family: Tahoma; font-size: 10px; }
+        table { border-collapse: collapse; width: 100%; }
+        th { background-color: lightgrey; font-weight: bold; font-size: 12px; }
+        tr:nth-child(even) { background-color: #f2f9e5; }
+        th, td { padding: 8px; text-align: left; }
+        th.sortable:hover { cursor: pointer; }
+    </style>
+    <script>
+        function sortTable(n) {
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.getElementById("vmTable");
+            switching = true;
+            dir = "asc"; 
+            while (switching) {
+                switching = false;
+                rows = table.rows;
+                for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+                    if (dir === "asc") {
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } else if (dir === "desc") {
+                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    switchcount++; 
+                } else {
+                    if (switchcount === 0 && dir === "asc") {
+                        dir = "desc";
+                        switching = true;
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>VMs with CDROM Connected</h2>
+    <table id="vmTable">
+        <thead>
+            <tr>
+                <th class="sortable" onclick="sortTable(0)">VM Name</th>
+                <th class="sortable" onclick="sortTable(1)">Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>LI-AGENT-176</td>
+                <td>VM has a CDROM device connected! CD/DVD drive 1</td>
+            </tr>
+            <tr>
+                <td>LI-AGENT-177</td>
+                <td>VM has a CDROM device connected! CD/DVD drive 1</td>
+            </tr>
+            <tr>
+                <td>LI-AGENT-178</td>
+                <td>VM has a CDROM device connected! CD/DVD drive 1</td>
+            </tr>
+            <tr>
+                <td>MERCK-SITE1-160</td>
+                <td>VM has a CDROM device connected! CD/DVD drive 1</td>
+            </tr>
+            <tr>
+                <td>MERCK-SITE1-161</td>
+                <td>VM has a CDROM device connected! CD/DVD drive 1</td>
+            </tr>
+            <tr>
+                <td>MERCK-SITE2-162</td>
+                <td>VM has a CDROM device connected! CD/DVD drive 1</td>
+            </tr>
+            <tr>
+                <td>MERCK-SITE2-163</td>
+                <td>VM has a CDROM device connected! CD/DVD drive 1</td>
+            </tr>
+            <tr>
+                <td>MERCK-SITE2-164</td>
+                <td>VM has a CDROM device connected! CD/DVD drive 1</td>
+            </tr>
+            <tr>
+                <td>TECHBYTES-172</td>
+                <td>VM has a CDROM device connected! CD/DVD drive 1</td>
+            </tr>
+            <tr>
+                <td>TECHBYTES-173</td>
+                <td>VM has a CDROM device connected! CD/DVD drive 1</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
